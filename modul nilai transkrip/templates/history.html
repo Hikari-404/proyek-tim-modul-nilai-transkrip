@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riwayat Perubahan</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Riwayat Perubahan untuk {{ student_id }}</h1>
+        </header>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Nama</th>
+                    <th>Course ID</th>
+                    <th>Old Value</th>
+                    <th>New Value</th>
+                    <th>Changed By</th>
+                    <th>Changed At</th>
+                    <th>Reason</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for h in history %}
+                <tr>
+                    <td>{{ h[0] }}</td>
+                    <td>{{ h[1] }}</td>
+                    <td>{{ h[2] or '-' }}</td>
+                    <td>{{ h[3] }}</td>
+                    <td>{{ h[4] }}</td>
+                    <td>{{ h[5] }}</td>
+                    <td>{{ h[6] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="actions">
+            <a href="/students">Kembali ke Daftar Mahasiswa</a>
+        </div>
+    </div>
+</body>
+</html>

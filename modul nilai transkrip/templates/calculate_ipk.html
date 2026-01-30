@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hitung IPK</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Hitung IPK</h1>
+        </header>
+
+        <form method="post">
+            <h3>Masukkan Nilai Mata Kuliah</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Kode MK</th>
+                        <th>SKS</th>
+                        <th>Nilai Huruf</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in range(1, 11) %}
+                    <tr>
+                        <td><input type="text" name="kode_{{ i }}" placeholder="TI101" required></td>
+                        <td><input type="number" name="sks_{{ i }}" placeholder="3" min="1" required></td>
+                        <td>
+                            <select name="nilai_{{ i }}" required>
+                                <option value="">Pilih</option>
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                                <option value="D">D</option>
+                                <option value="E">E</option>
+                            </select>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <button type="submit">Hitung IPK</button>
+        </form>
+
+        {% if ipk is defined %}
+        <div class="ipk-result">
+            IPK: {{ "%.2f"|format(ipk) }}
+        </div>
+        {% endif %}
+
+        <div class="actions">
+            <a href="/">Kembali ke Home</a>
+        </div>
+    </div>
+</body>
+</html>

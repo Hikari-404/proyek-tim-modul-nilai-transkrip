@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Transkrip Akademik</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Sistem Transkrip Akademik</h1>
+            <p>Selamat datang di sistem manajemen transkrip akademik mahasiswa.</p>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="/calculate_ipk">Hitung IPK</a></li>
+                <li><a href="/generate_pdf">Generate PDF Transkrip</a></li>
+                <li><a href="/students">Kelola Mahasiswa</a></li>
+            </ul>
+        </nav>
+
+        <footer>
+            <p>&copy; 2026 Sistem Transkrip Akademik. Dibuat untuk keperluan akademik.</p>
+        </footer>
+    </div>
+</body>
+</html>

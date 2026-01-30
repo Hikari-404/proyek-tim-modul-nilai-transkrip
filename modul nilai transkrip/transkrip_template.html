@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Transkrip Akademik</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            font-size: 12pt;
+            line-height: 1.5;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #000;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .logo {
+            width: 100px;
+            height: auto;
+        }
+        .title {
+            font-size: 24pt;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .biodata {
+            margin-bottom: 30px;
+        }
+        .biodata table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .biodata td {
+            padding: 5px;
+            vertical-align: top;
+        }
+        .biodata .label {
+            font-weight: bold;
+            width: 150px;
+        }
+        .semester {
+            margin-bottom: 20px;
+            page-break-inside: avoid;
+        }
+        .semester h3 {
+            font-size: 14pt;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 10px;
+        }
+        th, td {
+            border: 1px solid #000;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f0f0f0;
+            font-weight: bold;
+        }
+        .footer {
+            margin-top: 40px;
+            border-top: 2px solid #000;
+            padding-top: 20px;
+            text-align: center;
+        }
+        .footer table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .footer td {
+            padding: 10px;
+            vertical-align: top;
+        }
+        .footer .label {
+            font-weight: bold;
+            text-align: left;
+        }
+        .ttd {
+            width: 150px;
+            height: auto;
+        }
+        .signature {
+            text-align: center;
+            margin-top: 20px;
+        }
+        @page {
+            size: A4;
+            margin: 1in;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="{{ logo_url }}" alt="Logo Universitas" class="logo">
+        <div class="title">TRANSKRIP AKADEMIK</div>
+    </div>
+
+    <div class="biodata">
+        <table>
+            <tr>
+                <td class="label">NIM:</td>
+                <td>{{ nim }}</td>
+                <td class="label">Program Studi:</td>
+                <td>{{ prodi }}</td>
+            </tr>
+            <tr>
+                <td class="label">Nama:</td>
+                <td>{{ nama }}</td>
+                <td class="label">Angkatan:</td>
+                <td>{{ angkatan }}</td>
+            </tr>
+        </table>
+    </div>
+
+    {% for semester in semesters %}
+    <div class="semester">
+        <h3>{{ semester.semester }}</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Kode MK</th>
+                    <th>Nama MK</th>
+                    <th>SKS</th>
+                    <th>Nilai</th>
+                    <th>Mutu</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for mk in semester.mata_kuliah %}
+                <tr>
+                    <td>{{ mk.kode }}</td>
+                    <td>{{ mk.nama }}</td>
+                    <td>{{ mk.sks }}</td>
+                    <td>{{ mk.nilai }}</td>
+                    <td>{{ mk.mutu }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endfor %}
+
+    <div class="footer">
+        <table>
+            <tr>
+                <td class="label">Total SKS:</td>
+                <td>{{ total_sks }}</td>
+                <td class="label">IPK:</td>
+                <td>{{ "%.2f"|format(ipk) }}</td>
+                <td class="label">Predikat:</td>
+                <td>{{ predikat }}</td>
+            </tr>
+        </table>
+        <div class="signature">
+            <p>Dekan Fakultas</p>
+            <img src="{{ ttd_dekan }}" alt="TTD Dekan" class="ttd">
+            <p><strong>Nama Dekan</strong></p>
+        </div>
+    </div>
+</body>
+</html>

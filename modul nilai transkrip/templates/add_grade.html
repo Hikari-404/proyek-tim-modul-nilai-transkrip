@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tambah Nilai</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Tambah Nilai untuk {{ student_id }}</h1>
+        </header>
+
+        <form method="post">
+            <div class="form-group">
+                <label for="course_id">Course ID:</label>
+                <input type="text" id="course_id" name="course_id" placeholder="TI101" required>
+            </div>
+            <div class="form-group">
+                <label for="grade">Grade:</label>
+                <select id="grade" name="grade" required>
+                    <option value="">Pilih</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                    <option value="E">E</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="changed_by">Changed By:</label>
+                <input type="text" id="changed_by" name="changed_by" placeholder="lecturer" required>
+            </div>
+            <div class="form-group">
+                <label for="reason">Reason:</label>
+                <input type="text" id="reason" name="reason" placeholder="Improved performance" required>
+            </div>
+            <button type="submit">Tambah</button>
+        </form>
+
+        <div class="actions">
+            <a href="/grades/{{ student_id }}">Kembali ke Nilai</a>
+        </div>
+    </div>
+</body>
+</html>
