@@ -1,12 +1,12 @@
 # proyek-tim-modul-nilai-transkrip
 
 pada proyek ini tim kami berisikan
-Shafwan Hakim 
-Matin waliyyu kartar
-Abby gustian
-Dosma silitonga
-Bayu 
-Rifqi suryana
+1. Shafwan Hakim 
+2. Matin waliyyu kartar
+3. Abby gustian
+4. Dosma silitonga
+5. Bayu 
+6. Rifqi suryana
 
 # Sistem Transkrip Akademik
 
